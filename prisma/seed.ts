@@ -1,6 +1,12 @@
-import { PrismaPg } from '@prisma/adapter-pg'
-import { PrismaClient } from '../app/generated/prisma'
-import pg from 'pg'
+/* eslint-disable @typescript-eslint/no-require-imports */
+// Run with: npm run db:seed
+// Uses require to avoid TypeScript path issues with generated prisma client
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { PrismaClient } = require('../app/generated/prisma') as any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { PrismaPg } = require('@prisma/adapter-pg') as any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const pg = require('pg') as any
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL })
 const adapter = new PrismaPg(pool)
@@ -9,9 +15,9 @@ const prisma = new PrismaClient({ adapter })
 async function main() {
   console.log('🌱 Seeding database...')
 
-  // Seed videos
   const videos = [
     {
+      id: 'seed-pesquisas',
       title: 'Como ler uma pesquisa eleitoral: erros e armadilhas comuns',
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       platform: 'youtube',
@@ -20,6 +26,7 @@ async function main() {
       publishedAt: new Date('2025-03-17'),
     },
     {
+      id: 'seed-cenario',
       title: 'Análise de cenário: o que os números dizem antes do debate',
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       platform: 'youtube',
@@ -28,6 +35,7 @@ async function main() {
       publishedAt: new Date('2025-03-14'),
     },
     {
+      id: 'seed-redes',
       title: 'Monitoramento de redes: o que as bolhas não deixam você ver',
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       platform: 'youtube',
@@ -36,6 +44,7 @@ async function main() {
       publishedAt: new Date('2025-03-10'),
     },
     {
+      id: 'seed-debates',
       title: 'Debate eleitoral: como avaliar desempenho além da torcida',
       url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       platform: 'youtube',
@@ -47,13 +56,12 @@ async function main() {
 
   for (const video of videos) {
     await prisma.video.upsert({
-      where: { id: `seed-${video.category.toLowerCase()}` },
+      where: { id: video.id },
       update: video,
-      create: { id: `seed-${video.category.toLowerCase()}`, ...video },
+      create: video,
     })
   }
 
-  // Seed newsletter editions
   const editions = [
     {
       id: 'seed-edition-1',
@@ -85,7 +93,7 @@ async function main() {
 }
 
 main()
-  .catch((e) => {
+  .catch((e: unknown) => {
     console.error(e)
     process.exit(1)
   })
