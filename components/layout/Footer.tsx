@@ -1,63 +1,121 @@
 import Link from 'next/link'
-import { Separator } from '@/components/ui/separator'
 
-const footerLinks = {
-  Navegação: [
-    { href: '/metodo', label: 'Método' },
-    { href: '/servicos', label: 'Serviços' },
-    { href: '/sobre', label: 'Sobre' },
-    { href: '/contato', label: 'Contato' },
-  ],
-  Conteúdo: [
-    { href: '/videos', label: 'Vídeos' },
-    { href: '/newsletter', label: 'Newsletter' },
-  ],
+const quickLinks = [
+  { href: '/metodo', label: 'Método' },
+  { href: '/servicos', label: 'Serviços' },
+  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/videos', label: 'Vídeos' },
+  { href: '/sobre', label: 'Sobre' },
+  { href: '/contato', label: 'Contato' },
+]
+
+function InstagramIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function YouTubeIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+      <polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="#0d0f14" />
+    </svg>
+  )
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
 }
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {/* Brand */}
-          <div className="md:col-span-2">
-            <span className="text-2xl font-bold text-accent">Multitudes</span>
-            <p className="mt-3 text-sm opacity-70 max-w-sm leading-relaxed">
-              Estratégia política para campanhas, mandatos e análises que precisam de método,
-              mensagem e direção.
+          <div>
+            <span className="font-serif text-2xl font-bold text-primary">Multitudes</span>
+            <p className="mt-3 text-sm leading-relaxed text-muted max-w-xs">
+              Estratégia política orientada por dados.
             </p>
           </div>
 
-          {/* Links */}
-          {Object.entries(footerLinks).map(([group, links]) => (
-            <div key={group}>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">
-                {group}
-              </h3>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm opacity-70 hover:opacity-100 transition-opacity"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Quick links */}
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+              Links rápidos
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted transition-colors hover:text-foreground"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact + Social */}
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary">
+              Contato
+            </h3>
+            <a
+              href="mailto:Adaocand@gmail.com"
+              className="text-sm text-muted transition-colors hover:text-foreground"
+            >
+              Adaocand@gmail.com
+            </a>
+            <div className="mt-6 flex items-center gap-4">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-primary"
+                aria-label="Instagram"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-primary"
+                aria-label="YouTube"
+              >
+                <YouTubeIcon />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted transition-colors hover:text-primary"
+                aria-label="LinkedIn"
+              >
+                <LinkedInIcon />
+              </a>
             </div>
-          ))}
+          </div>
         </div>
 
-        <Separator className="my-8 opacity-20" />
-
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-xs opacity-50">
-            © {new Date().getFullYear()} Multitudes Consultoria. Todos os direitos reservados.
-          </p>
-          <p className="text-xs opacity-50">
-            Estratégia política com método e dados.
+        <div className="mt-10 border-t border-border pt-6">
+          <p className="text-xs text-muted">
+            © {new Date().getFullYear()} Multitudes Consultoria · Todos os direitos reservados.
           </p>
         </div>
       </div>

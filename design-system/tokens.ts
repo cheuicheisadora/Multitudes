@@ -1,14 +1,14 @@
 export type DesignTokens = {
   colors: {
-    primary: string
     background: string
-    accent: string
+    surface: string
+    surfaceRaised: string
+    border: string
+    primary: string
+    primaryMuted: string
     foreground: string
     muted: string
-    mutedForeground: string
-    border: string
-    card: string
-    cardForeground: string
+    accent: string
     destructive: string
     destructiveForeground: string
     input: string
@@ -47,28 +47,28 @@ export type DesignTokens = {
 
 export const tokens: DesignTokens = {
   colors: {
-    primary: '#1a2332',
-    background: '#f8f7f4',
-    accent: '#c9a84c',
-    foreground: '#2d3748',
-    muted: '#e8e6e1',
-    mutedForeground: '#718096',
-    border: '#d1cec9',
-    card: '#ffffff',
-    cardForeground: '#2d3748',
+    background: '#0d0f14',
+    surface: '#141720',
+    surfaceRaised: '#1c2130',
+    border: '#252d3d',
+    primary: '#c9a84c',
+    primaryMuted: 'rgba(201,168,76,0.133)',
+    foreground: '#e8e6e1',
+    muted: '#7a8499',
+    accent: '#2a5caa',
     destructive: '#e53e3e',
     destructiveForeground: '#ffffff',
-    input: '#e2e0db',
+    input: '#1c2130',
     ring: '#c9a84c',
   },
   sidebar: {
-    background: '#1a2332',
-    foreground: '#f8f7f4',
+    background: '#141720',
+    foreground: '#e8e6e1',
     primary: '#c9a84c',
-    primaryForeground: '#1a2332',
-    accent: '#243047',
-    accentForeground: '#f8f7f4',
-    border: '#243047',
+    primaryForeground: '#0d0f14',
+    accent: '#1c2130',
+    accentForeground: '#e8e6e1',
+    border: '#252d3d',
     ring: '#c9a84c',
   },
   radius: {
@@ -86,9 +86,9 @@ export const tokens: DesignTokens = {
     '2xl': '5rem',
   },
   typography: {
-    fontSans: '"Inter", system-ui, -apple-system, sans-serif',
-    fontMono: '"JetBrains Mono", "Fira Code", monospace',
-    fontSerif: '"Merriweather", Georgia, serif',
+    fontSans: '"DM Sans", system-ui, -apple-system, sans-serif',
+    fontMono: '"DM Mono", "Fira Code", monospace',
+    fontSerif: '"Fraunces", Georgia, serif',
   },
 }
 

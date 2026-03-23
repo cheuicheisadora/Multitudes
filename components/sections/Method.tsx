@@ -1,81 +1,99 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
 
 const steps = [
   {
     number: '01',
-    title: 'Diagnóstico e construção da identidade política',
+    title: 'Diagnóstico e Identidade Política',
     description:
-      'Análise profunda do território, do eleitorado e do candidato. Construção da narrativa política e posicionamento estratégico com base em pesquisa qualitativa e quantitativa.',
+      'Definimos quem o candidato é, como é percebido e que narrativa pode torná-lo competitivo. Posicionamento, identidade verbal, leitura de alianças e espaço político a ocupar.',
   },
   {
     number: '02',
-    title: 'Inteligência eleitoral e planejamento territorial',
+    title: 'Inteligência Eleitoral e Planejamento',
     description:
-      'Mapeamento detalhado dos colégios eleitorais, análise de dados históricos de votação e elaboração do plano de priorização territorial para máxima eficiência de recursos.',
+      'Mapeamos territórios, concorrência, públicos e metas de crescimento. Análise de pesquisas, segmentação do eleitorado e cruzamento de dados para decisões fundamentadas.',
   },
   {
     number: '03',
-    title: 'Estrutura financeira e conformidade legal eleitoral',
+    title: 'Estrutura Financeira e Conformidade Legal',
     description:
-      'Planejamento orçamentário, orientação sobre financiamento de campanha, conformidade com a legislação eleitoral e gestão dos recursos de forma transparente e eficiente.',
+      'Organizamos orçamento, fluxo de recursos e aderência às regras eleitorais. Planejamento financeiro, operacional e acompanhamento de prestação de contas.',
   },
   {
     number: '04',
-    title: 'Execução integrada e comunicação multicanal',
+    title: 'Execução Integrada e Comunicação',
     description:
-      'Coordenação da comunicação digital e presencial, gestão de redes sociais, produção de conteúdo orientado por dados e monitoramento contínuo do ambiente político.',
+      'Redes sociais, agenda de campo, coordenação de mensagem, resposta rápida e materiais de campanha funcionando como um sistema único.',
   },
   {
     number: '05',
-    title: 'Reta final e operação eleitoral',
+    title: 'Reta Final e Operação Eleitoral',
     description:
-      'Intensificação da campanha nos momentos decisivos, coordenação da operação no dia do pleito, gestão de crise e acompanhamento em tempo real dos resultados.',
+      'Mobilização, presença territorial, proteção de narrativa e organização do dia da eleição. Protocolos de crise e reforço de mensagem na hora decisiva.',
   },
 ]
 
 export function Method() {
   return (
-    <section className="bg-muted py-20">
+    <section className="bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+        {/* Section header */}
+        <div className="mb-16 max-w-xl">
+          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
             Nossa Abordagem
           </p>
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="font-serif text-4xl font-bold text-foreground sm:text-5xl">
             Método em 5 Etapas
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Um processo estruturado e testado para transformar candidaturas em vitórias e mandatos em legados.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {steps.map((step, index) => (
-            <Card
-              key={step.number}
-              className={`relative border-border bg-card ${index === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
-            >
-              <CardHeader>
-                <span className="text-4xl font-black text-accent opacity-40">{step.number}</span>
-                <CardTitle className="text-lg text-foreground mt-2">{step.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Steps */}
+        <div className="relative">
+          {/* Vertical connector line */}
+          <div className="absolute left-0 top-4 hidden h-full w-px bg-border lg:block" style={{ left: '1.5rem' }} />
+
+          <div className="space-y-0">
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className="group relative grid grid-cols-1 gap-6 border-b border-border py-10 lg:grid-cols-[auto_1fr_auto] lg:items-start lg:gap-12"
+              >
+                {/* Number bullet */}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border bg-surface font-mono text-sm font-medium text-primary transition-colors group-hover:border-primary">
+                  {step.number}
+                </div>
+
+                {/* Content */}
+                <div className="min-w-0">
+                  <h3 className="font-serif text-2xl font-bold text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-muted">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Large decorative number */}
+                <div
+                  className="hidden select-none font-serif text-[120px] font-bold leading-none lg:block"
+                  style={{ color: 'var(--primary-muted)' }}
+                  aria-hidden
+                >
+                  {step.number}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-10 text-center">
-          <Button asChild variant="default" size="lg">
-            <Link href="/metodo">
-              Ver método completo
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
+        <div className="mt-10">
+          <Link
+            href="/metodo"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+          >
+            Ver método completo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Link>
         </div>
       </div>
     </section>

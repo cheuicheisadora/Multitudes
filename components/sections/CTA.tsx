@@ -1,46 +1,43 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { MessageCircle, ArrowRight } from 'lucide-react'
 
 export function CTA() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '5511999999999'
-  const whatsappMsg = encodeURIComponent(
-    'Olá! Gostaria de saber mais sobre os serviços da Multitudes Consultoria.'
-  )
-
   return (
-    <section className="bg-primary py-24">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl">
-          Pronto para levar sua campanha ao próximo nível?
+    <section className="grain relative overflow-hidden bg-background py-32">
+      {/* Topographic echo */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cdefs%3E%3Cstyle%3E.c%7Bfill:none;stroke:%23c9a84c;stroke-width:0.5%7D%3C/style%3E%3C/defs%3E%3Cellipse class='c' cx='250' cy='250' rx='240' ry='180'/%3E%3Cellipse class='c' cx='250' cy='250' rx='190' ry='140'/%3E%3Cellipse class='c' cx='250' cy='250' rx='140' ry='100'/%3E%3Cellipse class='c' cx='250' cy='250' rx='90' ry='60'/%3E%3Cellipse class='c' cx='250' cy='250' rx='40' ry='25'/%3E%3C/svg%3E")`,
+          backgroundSize: '500px 500px',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 className="font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          Campanhas competitivas<br />
+          não nascem do improviso.
         </h2>
-        <p className="mt-4 text-lg text-primary-foreground/70 max-w-2xl mx-auto">
-          Entre em contato com a equipe da Multitudes e descubra como podemos transformar
-          estratégia em resultados.
+        <p className="mt-6 text-lg text-muted">
+          Nascem de método, leitura e direção.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button asChild size="xl" variant="accent">
-            <a
-              href={`https://wa.me/${whatsappNumber}?text=${whatsappMsg}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle className="h-5 w-5" />
-              Falar pelo WhatsApp
-            </a>
-          </Button>
-          <Button
-            asChild
-            size="xl"
-            variant="outline"
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/contato"
+            className="inline-flex items-center gap-2 rounded-[6px] bg-primary px-8 py-4 text-sm font-semibold text-background transition-opacity hover:opacity-90"
           >
-            <Link href="/contato">
-              Enviar Briefing
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </Button>
+            Agendar reunião estratégica
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Link>
+          <Link
+            href="/newsletter"
+            className="inline-flex items-center gap-2 rounded-[6px] border border-border px-8 py-4 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            Assinar newsletter
+          </Link>
         </div>
       </div>
     </section>

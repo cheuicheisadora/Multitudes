@@ -1,9 +1,10 @@
 import { Hero } from '@/components/sections/Hero'
-import { About } from '@/components/sections/About'
 import { Method } from '@/components/sections/Method'
+import { ServicesSection } from '@/components/sections/ServicesSection'
+import { VideosSection } from '@/components/sections/VideosSection'
 import { NewsletterSection } from '@/components/sections/NewsletterSection'
-import { Differentials } from '@/components/sections/Differentials'
 import { ForWhom } from '@/components/sections/ForWhom'
+import { Differentials } from '@/components/sections/Differentials'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { CTA } from '@/components/sections/CTA'
 
@@ -11,11 +12,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
       <Method />
+      <ServicesSection />
+      <VideosSection />
       <NewsletterSection />
-      <Differentials />
       <ForWhom />
+      <Differentials />
       <HowItWorks />
       <CTA />
     </>

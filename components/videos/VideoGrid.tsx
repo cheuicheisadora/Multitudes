@@ -2,18 +2,9 @@
 
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Badge } from '@/components/ui/badge'
-import { VideoEmbed } from './VideoEmbed'
+import { LiteVideoEmbed } from './LiteVideoEmbed'
 
-const CATEGORIES = [
-  'Todas',
-  'Análises rápidas',
-  'Pesquisas eleitorais',
-  'Debates',
-  'Monitoramento de redes',
-  'Cenário político',
-  'Comentários da semana',
-]
+const CATEGORIES = ['Todos', 'Pesquisas', 'Debates', 'Cenário', 'Redes', 'Campanhas']
 
 interface Video {
   id: string
@@ -26,16 +17,17 @@ interface Video {
 }
 
 async function fetchVideos(category?: string): Promise<Video[]> {
-  const url = category && category !== 'Todas'
-    ? `/api/videos?category=${encodeURIComponent(category)}`
-    : '/api/videos'
+  const url =
+    category && category !== 'Todos'
+      ? `/api/videos?category=${encodeURIComponent(category)}`
+      : '/api/videos'
   const res = await fetch(url)
   if (!res.ok) throw new Error('Failed to fetch videos')
   return res.json()
 }
 
 export function VideoGrid() {
-  const [activeCategory, setActiveCategory] = useState('Todas')
+  const [activeCategory, setActiveCategory] = useState('Todos')
 
   const { data: videos = [], isLoading, isError } = useQuery({
     queryKey: ['videos', activeCategory],
@@ -50,11 +42,12 @@ export function VideoGrid() {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-[4px] border px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-wider transition-colors ${
               activeCategory === cat
-                ? 'border-accent bg-accent text-primary'
-                : 'border-border bg-card text-muted-foreground hover:border-accent hover:text-accent'
+                ? 'border-primary text-primary'
+                : 'border-border text-muted hover:border-primary hover:text-primary'
             }`}
+            style={activeCategory === cat ? { backgroundColor: 'var(--primary-muted)' } : {}}
           >
             {cat}
           </button>
@@ -64,32 +57,41 @@ export function VideoGrid() {
       {isLoading && (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[...Array(6)].map((_, i) => (
-            <div key={i} className="aspect-video rounded-lg bg-muted animate-pulse" />
+            <div key={i} className="aspect-video animate-pulse rounded-lg bg-surface" />
           ))}
         </div>
       )}
 
       {isError && (
-        <p className="text-center text-muted-foreground py-12">
+        <p className="py-12 text-center text-muted">
           Erro ao carregar vídeos. Tente novamente.
         </p>
       )}
 
       {!isLoading && !isError && videos.length === 0 && (
-        <p className="text-center text-muted-foreground py-12">
+        <p className="py-12 text-center text-muted">
           Nenhum vídeo encontrado nesta categoria.
         </p>
       )}
 
       {!isLoading && !isError && videos.length > 0 && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {videos.map((video) => (
-            <div key={video.id} className="space-y-3">
-              <VideoEmbed url={video.url} platform={video.platform} title={video.title} />
-              <div>
-                <Badge variant="secondary" className="mb-2 text-xs">{video.category}</Badge>
-                <h3 className="font-medium text-foreground text-sm leading-snug">{video.title}</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+            <div key={video.id} className="group">
+              <LiteVideoEmbed
+                url={video.url}
+                platform={video.platform}
+                title={video.title}
+                thumbnail={video.thumbnail}
+              />
+              <div className="mt-3">
+                <span className="font-mono text-xs uppercase tracking-wider text-primary">
+                  {video.category}
+                </span>
+                <h3 className="mt-1 font-serif text-base font-bold leading-snug text-foreground">
+                  {video.title}
+                </h3>
+                <p className="mt-1 font-mono text-xs text-muted">
                   {new Date(video.publishedAt).toLocaleDateString('pt-BR')}
                 </p>
               </div>

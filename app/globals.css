@@ -2,34 +2,38 @@
 
 /* design-system:start */
 :root {
-  --primary: #1a2332;
-  --background: #f8f7f4;
-  --accent: #c9a84c;
-  --foreground: #2d3748;
-  --muted: #e8e6e1;
-  --muted-foreground: #718096;
-  --border: #d1cec9;
-  --card: #ffffff;
-  --card-foreground: #2d3748;
+  --background: #0d0f14;
+  --surface: #141720;
+  --surface-raised: #1c2130;
+  --border: #252d3d;
+  --primary: #c9a84c;
+  --primary-muted: rgba(201, 168, 76, 0.133);
+  --foreground: #e8e6e1;
+  --muted: #7a8499;
+  --muted-foreground: #7a8499;
+  --accent: #2a5caa;
+  --accent-foreground: #e8e6e1;
   --destructive: #e53e3e;
   --destructive-foreground: #ffffff;
-  --input: #e2e0db;
+  --card: #141720;
+  --card-foreground: #e8e6e1;
+  --input: #1c2130;
   --ring: #c9a84c;
-  --sidebar-background: #1a2332;
-  --sidebar-foreground: #f8f7f4;
+  --sidebar-background: #141720;
+  --sidebar-foreground: #e8e6e1;
   --sidebar-primary: #c9a84c;
-  --sidebar-primary-foreground: #1a2332;
-  --sidebar-accent: #243047;
-  --sidebar-accent-foreground: #f8f7f4;
-  --sidebar-border: #243047;
+  --sidebar-primary-foreground: #0d0f14;
+  --sidebar-accent: #1c2130;
+  --sidebar-accent-foreground: #e8e6e1;
+  --sidebar-border: #252d3d;
   --sidebar-ring: #c9a84c;
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  --font-serif: "Merriweather", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "DM Mono", "Fira Code", monospace;
+  --font-serif: "Fraunces", Georgia, serif;
 }
 /* design-system:end */
 
@@ -37,19 +41,23 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-foreground: #f8f7f4;
-  --color-accent: var(--accent);
-  --color-accent-foreground: #1a2332;
+  --color-primary-foreground: #0d0f14;
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -60,6 +68,10 @@
   border-color: var(--border);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -68,7 +80,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Grain texture overlay */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
 }
+
+/* Staggered hero animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }

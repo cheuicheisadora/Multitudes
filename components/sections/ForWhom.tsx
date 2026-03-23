@@ -1,60 +1,59 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Vote, Building2, Users2, LineChart } from 'lucide-react'
-
 const audiences = [
   {
-    icon: Vote,
     title: 'Pré-candidatos',
-    description:
-      'Para quem está avaliando entrar na política e precisa de diagnóstico, posicionamento e orientação estratégica antes mesmo de lançar a candidatura.',
+    description: 'Que precisam estruturar a candidatura antes de entrar em campanha.',
   },
   {
-    icon: Building2,
     title: 'Candidatos em campanha',
-    description:
-      'Suporte completo durante o período eleitoral: planejamento, comunicação, território, monitoramento e operação.',
+    description: 'Que querem método, não improviso, nas semanas decisivas.',
   },
   {
-    icon: Users2,
-    title: 'Equipes de campanha',
-    description:
-      'Para coordenadores, marqueteiros e assessores que precisam de metodologia, ferramentas e apoio especializado para organizar a operação.',
+    title: 'Equipes políticas',
+    description: 'Coordenadores, tesoureiros e assessores que precisam de suporte técnico.',
   },
   {
-    icon: LineChart,
-    title: 'Mandatos e gabinetes',
-    description:
-      'Parlamentares e gestores que precisam de inteligência política contínua, monitoramento de redes e comunicação estratégica durante o mandato.',
+    title: 'Mandatários',
+    description: 'Que buscam análise para posicionamento e comunicação contínua.',
+  },
+  {
+    title: 'Partidos e grupos',
+    description: 'Que precisam organizar múltiplas candidaturas com eficiência.',
+  },
+  {
+    title: 'Analistas e assessores',
+    description: 'Que consomem conteúdo político de qualidade.',
   },
 ]
 
 export function ForWhom() {
   return (
-    <section className="bg-muted py-20">
+    <section className="bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-accent">
+        <div className="mb-16 max-w-xl">
+          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
             Público-alvo
           </p>
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Para quem é</h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+          <h2 className="font-serif text-4xl font-bold text-foreground sm:text-5xl">
+            Para quem é
+          </h2>
+          <p className="mt-4 leading-relaxed text-muted">
             A Multitudes trabalha com quem leva política a sério.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {audiences.map(({ icon: Icon, title, description }) => (
-            <Card key={title} className="border-border bg-card">
-              <CardHeader className="flex flex-row items-start gap-4 pb-2">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary">
-                  <Icon className="h-5 w-5 text-accent" />
-                </div>
-                <CardTitle className="text-lg text-foreground">{title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-              </CardContent>
-            </Card>
+        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {audiences.map((item) => (
+            <div
+              key={item.title}
+              className="group bg-background p-6 transition-colors hover:bg-surface"
+            >
+              <div
+                className="mb-4 h-px w-6 transition-all duration-300 group-hover:w-10"
+                style={{ backgroundColor: 'var(--primary)' }}
+              />
+              <h3 className="font-serif text-lg font-bold text-foreground">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
+            </div>
           ))}
         </div>
       </div>
