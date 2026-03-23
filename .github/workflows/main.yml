@@ -1,0 +1,19 @@
+# ============================================================
+# Multitudes — Variáveis de Ambiente
+# Copie este arquivo para .env.local e preencha os valores
+# ============================================================
+
+# --- Banco de Dados (Neon) ---
+# Obtenha em: console.neon.tech → seu projeto → Connection string
+DATABASE_URL="postgresql://neondb_owner:npg_dZ1MTtDJ3PgB@ep-summer-field-amk01d7i-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+# --- Auth.js v5 ---
+# Gere com: openssl rand -base64 32
+AUTH_SECRET=""
+
+# --- Email (Resend) — opcional ---
+# Obtenha em: resend.com → API Keys
+RESEND_API_KEY="re_gTs8Q57u_FszraDRwKJxVUa2UmbztUwwn"
+
+# --- App ---
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
