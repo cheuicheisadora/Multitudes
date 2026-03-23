@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  role      String?
+  city      String?
+  state     String?
+  context   String?
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  url         String
+  platform    String
+  category    String
+  thumbnail   String?
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model Edition {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String?
+  publishedAt DateTime @default(now())
+  url         String
+  createdAt   DateTime @default(now())
+}
