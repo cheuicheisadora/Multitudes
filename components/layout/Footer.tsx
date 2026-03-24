@@ -61,22 +61,6 @@ export function Footer() {
             <p className="mt-3 max-w-xs text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
               Estratégia política orientada por dados.
             </p>
-            <div className="mt-4 space-y-1">
-              <a
-                href="mailto:Adaocand@gmail.com"
-                className="block text-sm transition-colors hover:text-white"
-                style={{ color: 'var(--muted)' }}
-              >
-                Adaocand@gmail.com
-              </a>
-              <a
-                href="tel:+5561992560616"
-                className="block text-sm transition-colors hover:text-white"
-                style={{ color: 'var(--muted)' }}
-              >
-                (61) 9256-0616
-              </a>
-            </div>
           </div>
 
           {/* Links */}
