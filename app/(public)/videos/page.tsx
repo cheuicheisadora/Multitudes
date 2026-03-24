@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getLatestVideos } from '@/lib/youtube'
+import { getLatestPoliticsVideos } from '@/lib/youtube'
 import { VideoGrid } from '@/components/videos/VideoGrid'
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default async function VideosPage() {
-  const videos = await getLatestVideos(12)
+  const videos = await getLatestPoliticsVideos(12)
   const [featured, ...rest] = videos
 
   return (
