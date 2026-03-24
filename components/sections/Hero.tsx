@@ -94,20 +94,6 @@ export async function Hero() {
               </a>
             </div>
 
-            {/* Microcopy */}
-            <p
-              className="hero-microcopy mt-5 text-xs"
-              style={{ color: 'var(--subtle)', fontFamily: 'var(--font-mono)' }}
-            >
-              ou envie um e-mail direto:{' '}
-              <a
-                href="mailto:Adaocand@gmail.com"
-                style={{ color: 'var(--muted)' }}
-                className="transition-colors hover:text-white"
-              >
-                Adaocand@gmail.com
-              </a>
-            </p>
 
             {/* Stats badge */}
             <div
