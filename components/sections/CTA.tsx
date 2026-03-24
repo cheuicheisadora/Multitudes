@@ -1,11 +1,6 @@
-'use client'
-
-import { useState } from 'react'
-import { BriefingModal } from '@/components/modals/BriefingModal'
+import Link from 'next/link'
 
 export function CTA() {
-  const [open, setOpen] = useState(false)
-
   return (
     <>
       <section
@@ -58,12 +53,12 @@ export function CTA() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <button
-              onClick={() => setOpen(true)}
+            <Link
+              href="/contato"
               className="btn-red inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white"
             >
               Conversa estratégica →
-            </button>
+            </Link>
             <a
               href="https://wa.me/5561992560616?text=Olá,%20vim%20pelo%20site%20da%20Multitudes."
               target="_blank"
@@ -83,7 +78,6 @@ export function CTA() {
         </div>
       </section>
 
-      <BriefingModal open={open} onClose={() => setOpen(false)} />
     </>
   )
 }
