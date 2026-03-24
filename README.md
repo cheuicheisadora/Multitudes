@@ -43,6 +43,16 @@ ADMIN_USERNAME=admin
 ADMIN_PASSWORD=sua-senha-forte
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_SITE_NAME=Multitudes Consultoria
+
+DATABASE_URL="postgresql://..."
+
+AUTH_SECRET=""
+
+RESEND_API_KEY="..."
+
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+YOUTUBE_API_KEY= AIzaSyCt7_SMhaAhEsoiA9daFE6FmSutcslN1bE
 ```
 
 ### 3. Configure o banco de dados
