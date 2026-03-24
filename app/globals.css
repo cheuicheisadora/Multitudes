@@ -15,10 +15,10 @@
   --subtle:     #384D66;
 
   /* Acento principal — magenta */
-  --red:        #B5179E;
-  --red-dim:    rgba(181, 23, 158, 0.1);
-  --red-border: rgba(181, 23, 158, 0.333);
-  --red-hover:  #D01CB8;
+  --red:        #8B0070;
+  --red-dim:    rgba(139, 0, 112, 0.1);
+  --red-border: rgba(139, 0, 112, 0.333);
+  --red-hover:  #A8008A;
 
   /* Acentos suporte */
   --gold:       #D4A843;
@@ -27,23 +27,23 @@
   /* Sidebar */
   --sidebar-background:          #0D1220;
   --sidebar-foreground:          #F0EDE8;
-  --sidebar-primary:             #B5179E;
+  --sidebar-primary:             #8B0070;
   --sidebar-primary-foreground:  #F0EDE8;
   --sidebar-accent:              #141B2D;
   --sidebar-accent-foreground:   #F0EDE8;
   --sidebar-border:              #1C2840;
-  --sidebar-ring:                #B5179E;
+  --sidebar-ring:                #8B0070;
 
   /* Compat */
   --background:        #070A10;
   --foreground:        #F0EDE8;
   --card:              #0D1220;
   --card-foreground:   #F0EDE8;
-  --primary:           #B5179E;
+  --primary:           #8B0070;
   --primary-foreground:#F0EDE8;
   --muted-foreground:  #6E839E;
   --input:             #141B2D;
-  --ring:              #B5179E;
+  --ring:              #8B0070;
   --destructive:       #e53e3e;
   --destructive-foreground: #ffffff;
 
