@@ -9,7 +9,7 @@ import { X, Loader2 } from 'lucide-react'
 
 const schema = z.object({
   name:    z.string().min(2, 'Nome obrigatório'),
-  email:   z.email('E-mail inválido'),
+  email:   z.string().email('E-mail inválido'),
   phone:   z.string().min(8, 'Telefone obrigatório'),
   role:    z.string().min(1, 'Selecione uma opção'),
   city:    z.string().optional(),
@@ -25,13 +25,13 @@ interface Props {
 
 export function BriefingModal({ open, onClose }: Props) {
   const overlayRef = useRef<HTMLDivElement>(null)
-  const firstFocusRef = useRef<HTMLInputElement>(null)
   const [submitting, setSubmitting] = useState(false)
 
   const {
     register,
     handleSubmit,
     reset,
+    setFocus,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
@@ -39,7 +39,7 @@ export function BriefingModal({ open, onClose }: Props) {
   useEffect(() => {
     if (!open) return
     const prev = document.activeElement as HTMLElement
-    setTimeout(() => firstFocusRef.current?.focus(), 50)
+    setTimeout(() => setFocus('name'), 50)
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -145,7 +145,6 @@ export function BriefingModal({ open, onClose }: Props) {
               <label style={labelStyle}>Nome *</label>
               <input
                 {...register('name')}
-                ref={firstFocusRef as React.Ref<HTMLInputElement>}
                 placeholder="Seu nome completo"
                 style={inputStyle}
                 aria-invalid={!!errors.name}

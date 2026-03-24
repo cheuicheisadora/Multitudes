@@ -88,8 +88,7 @@ export async function Hero() {
               <BriefingTrigger />
               <a
                 href="/newsletter"
-                className="inline-flex items-center gap-2 rounded-[3px] border px-5 py-3 text-sm font-medium transition-colors"
-                style={{ borderColor: 'var(--border-2)', color: 'var(--fg)' }}
+                className="btn-ghost inline-flex items-center gap-2 rounded-[3px] px-5 py-3 text-sm font-medium"
               >
                 Assinar newsletter
               </a>

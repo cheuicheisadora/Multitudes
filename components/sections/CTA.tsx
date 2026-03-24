@@ -60,10 +60,7 @@ export function CTA() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => setOpen(true)}
-              className="inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white transition-colors"
-              style={{ backgroundColor: 'var(--red)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red-hover)')}
-              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red)')}
+              className="btn-red inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white"
             >
               Conversa estratégica →
             </button>
@@ -71,8 +68,7 @@ export function CTA() {
               href="https://wa.me/5561992560616?text=Olá,%20vim%20pelo%20site%20da%20Multitudes."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-[3px] border px-8 py-4 text-sm font-medium transition-colors hover:text-white"
-              style={{ borderColor: 'var(--border-2)', color: 'var(--fg)' }}
+              className="btn-ghost inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-medium"
             >
               WhatsApp direto
             </a>

@@ -10,10 +10,7 @@ export function BriefingTrigger() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-[3px] px-5 py-3 text-sm font-semibold text-white transition-colors"
-        style={{ backgroundColor: 'var(--red)' }}
-        onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red-hover)')}
-        onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red)')}
+        className="btn-red inline-flex items-center gap-2 rounded-[3px] px-5 py-3 text-sm font-semibold text-white"
       >
         Conversa estratégica
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

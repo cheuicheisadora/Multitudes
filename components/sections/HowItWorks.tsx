@@ -105,10 +105,7 @@ export function HowItWorks() {
           <div className="mt-16 text-center">
             <button
               onClick={() => setOpen(true)}
-              className="inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white transition-colors"
-              style={{ backgroundColor: 'var(--red)' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red-hover)')}
-              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red)')}
+              className="btn-red inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white"
             >
               Iniciar conversa estratégica →
             </button>

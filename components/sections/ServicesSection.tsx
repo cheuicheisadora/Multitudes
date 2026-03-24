@@ -80,18 +80,8 @@ export function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group relative p-6 transition-colors"
+              className="card-hover relative p-6"
               style={{ background: 'var(--bg)' }}
-              onMouseEnter={e => {
-                const el = e.currentTarget as HTMLDivElement
-                el.style.background = 'var(--surface)'
-                el.style.borderLeft = '3px solid var(--red)'
-              }}
-              onMouseLeave={e => {
-                const el = e.currentTarget as HTMLDivElement
-                el.style.background = 'var(--bg)'
-                el.style.borderLeft = ''
-              }}
             >
               <div
                 className="mb-4 text-2xl"
