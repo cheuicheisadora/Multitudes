@@ -56,7 +56,7 @@ export function LiteYouTube({ videoId, title, thumbnail }: Props) {
       >
         <div
           className="flex h-14 w-14 items-center justify-center rounded-full transition-transform duration-200 group-hover:scale-110"
-          style={{ background: 'var(--red)', boxShadow: '0 0 24px rgba(192,57,43,0.5)' }}
+          style={{ background: 'var(--red)', boxShadow: '0 0 24px rgba(181,23,158,0.5)' }}
         >
           <svg
             width="20" height="20" viewBox="0 0 24 24"

@@ -14,11 +14,11 @@
   --muted:      #6E839E;
   --subtle:     #384D66;
 
-  /* Acento principal — vermelho */
-  --red:        #C0392B;
-  --red-dim:    rgba(192, 57, 43, 0.1);
-  --red-border: rgba(192, 57, 43, 0.333);
-  --red-hover:  #E74C3C;
+  /* Acento principal — magenta */
+  --red:        #B5179E;
+  --red-dim:    rgba(181, 23, 158, 0.1);
+  --red-border: rgba(181, 23, 158, 0.333);
+  --red-hover:  #D01CB8;
 
   /* Acentos suporte */
   --gold:       #D4A843;
@@ -27,23 +27,23 @@
   /* Sidebar */
   --sidebar-background:          #0D1220;
   --sidebar-foreground:          #F0EDE8;
-  --sidebar-primary:             #C0392B;
+  --sidebar-primary:             #B5179E;
   --sidebar-primary-foreground:  #F0EDE8;
   --sidebar-accent:              #141B2D;
   --sidebar-accent-foreground:   #F0EDE8;
   --sidebar-border:              #1C2840;
-  --sidebar-ring:                #C0392B;
+  --sidebar-ring:                #B5179E;
 
   /* Compat */
   --background:        #070A10;
   --foreground:        #F0EDE8;
   --card:              #0D1220;
   --card-foreground:   #F0EDE8;
-  --primary:           #C0392B;
+  --primary:           #B5179E;
   --primary-foreground:#F0EDE8;
   --muted-foreground:  #6E839E;
   --input:             #141B2D;
-  --ring:              #C0392B;
+  --ring:              #B5179E;
   --destructive:       #e53e3e;
   --destructive-foreground: #ffffff;
 

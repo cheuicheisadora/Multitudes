@@ -22,7 +22,7 @@ export async function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(192,57,43,0.15) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(181,23,158,0.15) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           opacity: 0.4,
         }}
@@ -146,7 +146,7 @@ export async function Hero() {
             style={{
               background: 'var(--surface)',
               border: '1px solid var(--border-2)',
-              boxShadow: '0 0 40px rgba(192,57,43,0.08)',
+              boxShadow: '0 0 40px rgba(181,23,158,0.08)',
             }}
           >
             <PoliticalTicker items={news} updatedAgo={updatedAgo} />

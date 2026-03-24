@@ -17,7 +17,7 @@ export function CTA() {
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(192,57,43,0.12) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, rgba(181,23,158,0.12) 1px, transparent 1px)',
             backgroundSize: '32px 32px',
             opacity: 0.5,
           }}
@@ -30,7 +30,7 @@ export function CTA() {
           style={{
             width: '600px',
             height: '300px',
-            background: 'radial-gradient(ellipse, rgba(192,57,43,0.12) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(181,23,158,0.12) 0%, transparent 70%)',
           }}
         />
 
