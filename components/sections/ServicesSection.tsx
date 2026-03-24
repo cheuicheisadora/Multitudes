@@ -4,42 +4,42 @@ const services = [
   {
     icon: '◉',
     title: 'Diagnóstico político',
-    desc: 'Mapeamento completo do território eleitoral, análise de forças e vulnerabilidades.',
+    desc: 'Mapeamento completo do território: perfil de eleitorado, histórico de votação e análise de forças e vulnerabilidades antes de qualquer decisão.',
   },
   {
     icon: '◎',
     title: 'Pesquisa eleitoral',
-    desc: 'Pesquisas quantitativas e qualitativas, rastreamento de imagem e intenção de voto.',
+    desc: 'Pesquisas quantitativas e qualitativas, rastreamento de imagem e intenção de voto para decisões baseadas em dados reais, não intuição.',
   },
   {
     icon: '◈',
     title: 'Estratégia de campanha',
-    desc: 'Plano estratégico integrado: mensagem, segmentação, calendário e prioridades táticas.',
+    desc: 'Plano estratégico integrado: mensagem central, segmentação de público, calendário tático e prioridades por território.',
   },
   {
     icon: '◇',
     title: 'Comunicação política',
-    desc: 'Narrativa de campanha, identidade visual, scripts e materiais para todos os canais.',
+    desc: 'Narrativa de campanha coesa, identidade visual e conteúdo para cada canal — com consistência de tom do digital ao material de campo.',
   },
   {
     icon: '◆',
     title: 'Monitoramento digital',
-    desc: 'Análise de redes sociais, rastreamento de narrativas e inteligência de adversários.',
+    desc: 'Escuta ativa de redes sociais, rastreamento de narrativas em circulação e inteligência sobre movimentos dos adversários.',
   },
   {
     icon: '◐',
     title: 'Coordenação de campo',
-    desc: 'Estruturação de comitês, treinamento de lideranças e organização territorial.',
+    desc: 'Estruturação de comitês, treinamento de lideranças territoriais e organização de operações de campo com metas claras.',
   },
   {
     icon: '◑',
     title: 'Gestão de crise',
-    desc: 'Protocolos de resposta rápida, comunicação de crise e proteção de imagem.',
+    desc: 'Protocolos de resposta rápida, comunicação de crise e proteção de imagem — antes que o problema vire manchete.',
   },
   {
     icon: '○',
     title: 'Mandato e governança',
-    desc: 'Assessoria para mandatários: comunicação, agenda e posicionamento pós-eleição.',
+    desc: 'Assessoria contínua para mandatários: comunicação, agenda e posicionamento que constroem capital eleitoral durante o mandato.',
   },
 ]
 
@@ -65,18 +65,24 @@ export function ServicesSection() {
             >
               Serviços
             </h2>
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+              Módulos especializados que cobrem cada fase — do diagnóstico inicial à operação no dia do pleito.
+            </p>
           </div>
           <a
             href="/servicos"
-            className="text-sm font-medium transition-colors hover:text-white"
+            className="shrink-0 text-sm font-medium transition-colors hover:text-white"
             style={{ color: 'var(--muted)' }}
           >
-            Ver todos os serviços →
+            Ver detalhes e entregáveis →
           </a>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: 'var(--border)' }}>
+        <div
+          className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4"
+          style={{ background: 'var(--border)' }}
+        >
           {services.map((service) => (
             <div
               key={service.title}
