@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { VideosFeed } from '@/components/videos/VideosFeed'
 
 export const metadata: Metadata = {
   title: 'Vídeos',
@@ -28,15 +27,8 @@ export default function VideosPage() {
             Biblioteca de Vídeos
           </h1>
           <p className="mt-4 max-w-2xl text-base" style={{ color: 'var(--muted)' }}>
-            Análises rápidas, pesquisas eleitorais, debates e comentários semanais sobre o cenário
-            político brasileiro.
+            Em breve: análises, pesquisas eleitorais e comentários sobre o cenário político brasileiro.
           </p>
-        </div>
-      </div>
-
-      <div className="py-16" style={{ background: 'var(--bg)' }}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <VideosFeed count={12} />
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { Hero } from '@/components/sections/Hero'
 import { Method } from '@/components/sections/Method'
 import { ServicesSection } from '@/components/sections/ServicesSection'
-import { VideosSection } from '@/components/sections/VideosSection'
 import { NewsletterSection } from '@/components/sections/NewsletterSection'
 import { ForWhom } from '@/components/sections/ForWhom'
 import { Differentials } from '@/components/sections/Differentials'
@@ -14,7 +13,6 @@ export default function HomePage() {
       <Hero />
       <Method />
       <ServicesSection />
-      <VideosSection />
       <NewsletterSection />
       <ForWhom />
       <Differentials />
