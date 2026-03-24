@@ -1,13 +1,6 @@
-import { getLatestPoliticsVideos } from '@/lib/youtube'
-import { VideoCard } from '@/components/videos/VideoCard'
+import { VideosFeed } from '@/components/videos/VideosFeed'
 
-export async function VideosSection() {
-  const videos = await getLatestPoliticsVideos(6)
-
-  if (videos.length === 0) return null
-
-  const [featured, ...rest] = videos
-
+export function VideosSection() {
   return (
     <section
       className="py-24"
@@ -21,13 +14,13 @@ export async function VideosSection() {
               className="mb-3 text-xs font-semibold uppercase tracking-[0.2em]"
               style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
             >
-              ● Curadoria semanal
+              Conteúdo
             </p>
             <h2
               className="text-4xl font-bold"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
             >
-              Análises desta semana
+              Vídeos recentes
             </h2>
           </div>
           <a
@@ -35,28 +28,11 @@ export async function VideosSection() {
             className="hidden text-sm font-medium transition-colors hover:text-white md:block"
             style={{ color: 'var(--muted)' }}
           >
-            Ver todas as análises →
+            Ver todos os vídeos →
           </a>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {featured && <VideoCard video={featured} featured />}
-          {rest.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
-        </div>
-
-        {/* Mobile link */}
-        <div className="mt-8 text-center md:hidden">
-          <a
-            href="/videos"
-            className="text-sm font-medium transition-colors hover:text-white"
-            style={{ color: 'var(--muted)', fontFamily: 'var(--font-mono)' }}
-          >
-            Ver todas as análises →
-          </a>
-        </div>
+        <VideosFeed count={6} />
       </div>
     </section>
   )

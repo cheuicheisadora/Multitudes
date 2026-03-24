@@ -103,7 +103,7 @@ export async function getLatestPoliticsVideos(count = 6): Promise<YTVideo[]> {
 }
 
 // Vídeos reais de análise política brasileira — exibidos quando a API key não está configurada
-const FALLBACK_VIDEOS: YTVideo[] = [
+export const FALLBACK_VIDEOS: YTVideo[] = [
   {
     id:           'ZRTNHDd0gL8',
     title:        'Roda Viva | Análise do cenário político brasileiro 2026',

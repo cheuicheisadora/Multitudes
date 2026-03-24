@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { getLatestPoliticsVideos } from '@/lib/youtube'
-import { VideoGrid } from '@/components/videos/VideoGrid'
+import { VideosFeed } from '@/components/videos/VideosFeed'
 
 export const metadata: Metadata = {
   title: 'Vídeos',
@@ -8,10 +7,7 @@ export const metadata: Metadata = {
     'Análises rápidas, pesquisas eleitorais, debates e comentários semanais sobre o cenário político.',
 }
 
-export default async function VideosPage() {
-  const videos = await getLatestPoliticsVideos(12)
-  const [featured, ...rest] = videos
-
+export default function VideosPage() {
   return (
     <div>
       <div
@@ -40,11 +36,7 @@ export default async function VideosPage() {
 
       <div className="py-16" style={{ background: 'var(--bg)' }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {featured ? (
-            <VideoGrid featured={featured} rest={rest} />
-          ) : (
-            <p style={{ color: 'var(--muted)' }}>Nenhum vídeo disponível no momento.</p>
-          )}
+          <VideosFeed count={12} />
         </div>
       </div>
     </div>
