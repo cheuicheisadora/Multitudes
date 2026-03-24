@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BriefingModal } from '@/components/modals/BriefingModal'
@@ -15,6 +16,7 @@ const navLinks = [
 ]
 
 export function Header() {
+  const pathname = usePathname()
   const [mobileOpen, setMobileOpen]     = useState(false)
   const [scrolled, setScrolled]         = useState(false)
   const [modalOpen, setModalOpen]       = useState(false)
@@ -57,18 +59,21 @@ export function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium transition-colors"
-                style={{ color: 'var(--muted)' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: active ? 'var(--fg)' : 'var(--muted)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--fg)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = active ? 'var(--fg)' : 'var(--muted)')}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
           </nav>
 
           {/* Desktop CTA */}
@@ -104,17 +109,20 @@ export function Header() {
           style={{ background: 'var(--surface)' }}
         >
           <nav className="flex flex-col gap-1 px-4 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-md px-3 py-3 text-sm font-medium transition-colors"
-                style={{ color: 'var(--muted)' }}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-md px-3 py-3 text-sm font-medium transition-colors"
+                  style={{ color: active ? 'var(--fg)' : 'var(--muted)' }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
+            })}
             <div className="mt-3 flex flex-col gap-2">
               <button
                 onClick={() => { setMobileOpen(false); setModalOpen(true) }}
