@@ -1,86 +1,111 @@
-import Link from 'next/link'
-
 const services = [
   {
-    title: 'Diagnóstico Político',
-    description:
-      'Leitura do ambiente, do candidato e do território antes de qualquer decisão. Ponto de partida para campanhas que não improvisam.',
+    icon: '◉',
+    title: 'Diagnóstico político',
+    desc: 'Mapeamento completo do território eleitoral, análise de forças e vulnerabilidades.',
   },
   {
-    title: 'Posicionamento e Narrativa',
-    description:
-      'Construção da identidade política, da mensagem central e da linguagem da candidatura. O que o candidato diz, como diz e para quem.',
+    icon: '◎',
+    title: 'Pesquisa eleitoral',
+    desc: 'Pesquisas quantitativas e qualitativas, rastreamento de imagem e intenção de voto.',
   },
   {
-    title: 'Inteligência Eleitoral',
-    description:
-      'Análise de pesquisas, mapeamento territorial, segmentação de eleitorado e monitoramento de concorrência com metodologia própria.',
+    icon: '◈',
+    title: 'Estratégia de campanha',
+    desc: 'Plano estratégico integrado: mensagem, segmentação, calendário e prioridades táticas.',
   },
   {
-    title: 'Planejamento Territorial',
-    description:
-      'Divisão do território por potencial de voto, priorização de zonas e organização da presença de campo com critério analítico.',
+    icon: '◇',
+    title: 'Comunicação política',
+    desc: 'Narrativa de campanha, identidade visual, scripts e materiais para todos os canais.',
   },
   {
-    title: 'Monitoramento de Redes',
-    description:
-      'Rastreamento de narrativas, detecção de movimentações digitais, análise de engajamento e alertas em tempo real sobre o ambiente online.',
+    icon: '◆',
+    title: 'Monitoramento digital',
+    desc: 'Análise de redes sociais, rastreamento de narrativas e inteligência de adversários.',
   },
   {
-    title: 'Comunicação de Campanha',
-    description:
-      'Coordenação de mensagem entre redes sociais, agenda de campo, materiais e assessoria de imprensa. Coerência em todos os canais.',
+    icon: '◐',
+    title: 'Coordenação de campo',
+    desc: 'Estruturação de comitês, treinamento de lideranças e organização territorial.',
   },
   {
-    title: 'Produção de Conteúdo Político',
-    description:
-      'Vídeos curtos, análises, comentários e materiais para diferentes plataformas. Conteúdo com direção estratégica, não apenas volume.',
+    icon: '◑',
+    title: 'Gestão de crise',
+    desc: 'Protocolos de resposta rápida, comunicação de crise e proteção de imagem.',
   },
   {
-    title: 'Coordenação Estratégica',
-    description:
-      'Integração entre equipes, fornecedores e frentes de campanha. A consultoria que garante que o plano seja executado como foi desenhado.',
+    icon: '○',
+    title: 'Mandato e governança',
+    desc: 'Assessoria para mandatários: comunicação, agenda e posicionamento pós-eleição.',
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section className="bg-surface py-24">
+    <section
+      className="py-24"
+      style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
+        {/* Header */}
         <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
+          <div className="max-w-lg">
+            <p
+              className="mb-3 text-xs font-semibold uppercase tracking-[0.2em]"
+              style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
+            >
               O que fazemos
             </p>
-            <h2 className="font-serif text-4xl font-bold text-foreground sm:text-5xl">
+            <h2
+              className="text-4xl font-bold leading-tight"
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+            >
               Serviços
             </h2>
           </div>
-          <Link
+          <a
             href="/servicos"
-            className="shrink-0 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+            className="text-sm font-medium transition-colors hover:text-white"
+            style={{ color: 'var(--muted)' }}
           >
             Ver todos os serviços →
-          </Link>
+          </a>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: 'var(--border)' }}>
           {services.map((service) => (
             <div
               key={service.title}
-              className="group bg-surface p-6 transition-colors hover:bg-surface-raised"
+              className="group relative p-6 transition-colors"
+              style={{ background: 'var(--bg)' }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.background = 'var(--surface)'
+                el.style.borderLeft = '3px solid var(--red)'
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.background = 'var(--bg)'
+                el.style.borderLeft = ''
+              }}
             >
               <div
-                className="mb-4 h-px w-8 transition-all duration-300 group-hover:w-12"
-                style={{ backgroundColor: 'var(--primary)' }}
-              />
-              <h3 className="font-serif text-lg font-bold text-foreground">
+                className="mb-4 text-2xl"
+                style={{ color: 'var(--red)' }}
+                aria-hidden
+              >
+                {service.icon}
+              </div>
+              <h3
+                className="mb-2 text-sm font-semibold"
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+              >
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {service.description}
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+                {service.desc}
               </p>
             </div>
           ))}

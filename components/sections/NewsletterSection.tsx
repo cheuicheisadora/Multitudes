@@ -4,51 +4,88 @@ export function NewsletterSection() {
   return (
     <section
       className="py-24"
-      style={{
-        backgroundColor: 'var(--surface)',
-        borderTop: '2px solid var(--primary)',
-      }}
+      style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Editorial copy */}
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+          {/* Left: editorial copy */}
           <div>
-            <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
-              Intelligence Brief · Semanal
+            <p
+              className="mb-3 text-xs font-semibold uppercase tracking-[0.2em]"
+              style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
+            >
+              Publicação semanal
             </p>
-            <h2 className="font-serif text-4xl font-bold leading-tight text-foreground sm:text-5xl">
-              Análise política que você não vai encontrar em outro lugar.
+            <h2
+              className="text-4xl font-bold leading-tight"
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+            >
+              Inteligência política<br />
+              na sua caixa de entrada.
             </h2>
-            <p className="mt-6 leading-relaxed text-muted">
-              Toda semana: leitura estratégica do ambiente político, interpretação de pesquisas
-              eleitorais, análise de debates e relatórios de monitoramento de redes sociais. Para
-              quem toma decisões políticas com seriedade.
+            <p className="mt-6 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+              Toda semana: análise de cenário eleitoral, monitoramento de pesquisas,
+              movimentos dos partidos e o que os dados dizem antes da mídia perceber.
             </p>
 
-            {/* Lead magnet */}
-            <div className="mt-8 rounded-[6px] border border-border bg-surface-raised p-5">
-              <p className="font-mono text-xs font-medium uppercase tracking-wider text-primary">
-                📄 Bônus de boas-vindas
+            <ul className="mt-8 space-y-3">
+              {[
+                'Análise de cenários eleitorais 2026',
+                'Leitura de pesquisas e metodologias',
+                'Monitoramento de narrativas digitais',
+                'Bastidores da política brasileira',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ background: 'var(--red)' }}
+                    aria-hidden
+                  />
+                  <span className="text-sm" style={{ color: 'var(--muted)' }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div
+              className="mt-10 rounded-[3px] p-5"
+              style={{
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
+                borderTop: '3px solid var(--red)',
+              }}
+            >
+              <p
+                className="mb-1 text-xs uppercase tracking-widest"
+                style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
+              >
+                Lead magnet
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Ao se inscrever, você recebe o relatório:{' '}
-                <span className="font-medium text-foreground">
-                  "Como ler uma pesquisa eleitoral sem ser enganado"
-                </span>
+              <p className="text-sm font-semibold" style={{ color: 'var(--fg)', fontFamily: 'var(--font-display)' }}>
+                Guia: Como ler uma pesquisa eleitoral sem ser enganado
+              </p>
+              <p className="mt-1 text-xs" style={{ color: 'var(--muted)' }}>
+                PDF exclusivo para novos assinantes — metodologia, vieses e perguntas certas.
               </p>
             </div>
-
-            <p className="mt-6 text-xs text-muted">
-              Lido por assessores, candidatos e analistas políticos.
-            </p>
           </div>
 
-          {/* Form */}
-          <div className="rounded-[6px] border border-border bg-surface-raised p-8">
-            <h3 className="mb-6 font-serif text-xl font-bold text-foreground">
-              Assine gratuitamente
-            </h3>
-            <NewsletterForm variant="stacked" />
+          {/* Right: form */}
+          <div className="flex flex-col justify-center">
+            <div
+              className="rounded-[4px] p-8"
+              style={{
+                background: 'var(--surface)',
+                border: '1px solid var(--border-2)',
+              }}
+            >
+              <h3
+                className="mb-6 text-xl font-bold"
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+              >
+                Assinar gratuitamente
+              </h3>
+              <NewsletterForm />
+            </div>
           </div>
         </div>
       </div>

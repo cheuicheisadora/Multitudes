@@ -1,58 +1,85 @@
 const audiences = [
   {
     title: 'Pré-candidatos',
-    description: 'Que precisam estruturar a candidatura antes de entrar em campanha.',
+    desc:  'Que precisam estruturar a candidatura antes de entrar em campanha. Diagnóstico, posicionamento e plano estratégico.',
+    icon:  '◎',
   },
   {
     title: 'Candidatos em campanha',
-    description: 'Que querem método, não improviso, nas semanas decisivas.',
+    desc:  'Disputando eleições e que precisam de inteligência eleitoral, pesquisa e coordenação estratégica em tempo real.',
+    icon:  '◉',
   },
   {
-    title: 'Equipes políticas',
-    description: 'Coordenadores, tesoureiros e assessores que precisam de suporte técnico.',
+    title: 'Equipes de campanha',
+    desc:  'Coordenadores, marqueteiros e líderes que precisam de metodologia, dados e suporte para tomada de decisão.',
+    icon:  '◈',
   },
   {
     title: 'Mandatários',
-    description: 'Que buscam análise para posicionamento e comunicação contínua.',
+    desc:  'Vereadores, deputados e prefeitos que querem manter posicionamento estratégico e se preparar para a próxima disputa.',
+    icon:  '◇',
   },
   {
     title: 'Partidos e grupos',
-    description: 'Que precisam organizar múltiplas candidaturas com eficiência.',
+    desc:  'Diretórios regionais, grupos políticos e movimentos que precisam de inteligência coletiva e estratégia territorial.',
+    icon:  '◆',
   },
   {
-    title: 'Analistas e assessores',
-    description: 'Que consomem conteúdo político de qualidade.',
+    title: 'Assessores e consultores',
+    desc:  'Profissionais políticos que querem ferramentas analíticas e metodologia para ampliar sua capacidade de entrega.',
+    icon:  '○',
   },
 ]
 
 export function ForWhom() {
   return (
-    <section className="bg-background py-24">
+    <section
+      className="py-24"
+      style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="mb-16 max-w-xl">
-          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Público-alvo
+          <p
+            className="mb-3 text-xs font-semibold uppercase tracking-[0.2em]"
+            style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
+          >
+            Para quem
           </p>
-          <h2 className="font-serif text-4xl font-bold text-foreground sm:text-5xl">
-            Para quem é
+          <h2
+            className="text-4xl font-bold leading-tight"
+            style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+          >
+            Quem atendemos
           </h2>
-          <p className="mt-4 leading-relaxed text-muted">
-            A Multitudes trabalha com quem leva política a sério.
+          <p className="mt-4 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+            Trabalhamos com atores políticos que levam estratégia a sério.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {audiences.map((item) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {audiences.map((a) => (
             <div
-              key={item.title}
-              className="group bg-background p-6 transition-colors hover:bg-surface"
+              key={a.title}
+              className="rounded-[3px] p-6"
+              style={{
+                background: 'var(--bg)',
+                border: '1px solid var(--border)',
+              }}
             >
-              <div
-                className="mb-4 h-px w-6 transition-all duration-300 group-hover:w-10"
-                style={{ backgroundColor: 'var(--primary)' }}
-              />
-              <h3 className="font-serif text-lg font-bold text-foreground">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
+              <div className="mb-4 text-xl" style={{ color: 'var(--red)' }} aria-hidden>
+                {a.icon}
+              </div>
+              <h3
+                className="mb-2 text-sm font-semibold"
+                style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+              >
+                {a.title}
+              </h3>
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+                {a.desc}
+              </p>
             </div>
           ))}
         </div>

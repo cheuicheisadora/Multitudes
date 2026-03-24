@@ -1,71 +1,125 @@
-import Link from 'next/link'
+'use client'
+
+import { useState } from 'react'
+import { BriefingModal } from '@/components/modals/BriefingModal'
 
 const steps = [
   {
-    number: '1',
-    title: 'Conversa inicial',
-    description: 'Entendemos o projeto, o território e o momento político.',
+    num:  '1',
+    title: 'Briefing inicial',
+    desc:  'Você preenche um formulário rápido descrevendo candidatura, território e momento político. Nenhum compromisso ainda.',
   },
   {
-    number: '2',
-    title: 'Leitura preliminar',
-    description: 'Análise rápida do ambiente e das oportunidades da candidatura.',
+    num:  '2',
+    title: 'Conversa estratégica',
+    desc:  'Agendamos uma reunião de diagnóstico — presencial ou remota — para entender o cenário em profundidade.',
   },
   {
-    number: '3',
-    title: 'Proposta de atuação',
-    description: 'Escopo, cronograma e forma de trabalho adaptados ao seu contexto.',
+    num:  '3',
+    title: 'Proposta personalizada',
+    desc:  'Com base no diagnóstico, apresentamos um escopo de trabalho, metodologia e investimento adequados ao seu contexto.',
   },
   {
-    number: '4',
-    title: 'Início do trabalho',
-    description: 'Execução com acompanhamento próximo e comunicação direta.',
+    num:  '4',
+    title: 'Execução integrada',
+    desc:  'Começamos o trabalho com cronograma, entregáveis claros e comunicação contínua ao longo de toda a campanha.',
   },
 ]
 
 export function HowItWorks() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <section className="bg-surface py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 max-w-xl">
-          <p className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Processo
-          </p>
-          <h2 className="font-serif text-4xl font-bold text-foreground sm:text-5xl">
-            Como funciona o contato
-          </h2>
-        </div>
+    <>
+      <section
+        className="py-24"
+        style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)' }}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mb-16 max-w-xl">
+            <p
+              className="mb-3 text-xs font-semibold uppercase tracking-[0.2em]"
+              style={{ color: 'var(--red)', fontFamily: 'var(--font-mono)' }}
+            >
+              Processo
+            </p>
+            <h2
+              className="text-4xl font-bold leading-tight"
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+            >
+              Como começamos a trabalhar
+            </h2>
+          </div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step) => (
-            <div key={step.number} className="relative">
-              {/* Connector line (desktop) */}
+          {/* Steps */}
+          <div className="grid grid-cols-1 gap-0 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
               <div
-                className="absolute left-full top-4 hidden h-px w-full bg-border lg:block"
-                style={{ transform: 'translateX(-50%)', width: 'calc(100% - 3rem)' }}
-                aria-hidden
-              />
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface-raised font-mono text-sm font-medium text-primary">
-                {step.number}
-              </div>
-              <h3 className="mt-4 font-serif text-lg font-bold text-foreground">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
-            </div>
-          ))}
-        </div>
+                key={step.num}
+                className="relative p-6"
+                style={{
+                  borderTop: '3px solid var(--border)',
+                }}
+              >
+                {/* Number */}
+                <div
+                  className="mb-4 flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold"
+                  style={{
+                    background: 'var(--red-dim)',
+                    color: 'var(--red)',
+                    fontFamily: 'var(--font-mono)',
+                    border: '1px solid var(--red)',
+                  }}
+                >
+                  {step.num}
+                </div>
 
-        {/* CTA */}
-        <div className="mt-14 border-t border-border pt-10">
-          <Link
-            href="/contato"
-            className="inline-flex items-center gap-2 rounded-[6px] bg-primary px-6 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
-          >
-            Solicitar diagnóstico inicial
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Link>
+                {/* Arrow connector (not last) */}
+                {i < steps.length - 1 && (
+                  <div
+                    className="absolute top-9 right-0 hidden lg:block"
+                    aria-hidden
+                    style={{ color: 'var(--border-2)' }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                )}
+
+                <h3
+                  className="mb-2 text-sm font-semibold"
+                  style={{ fontFamily: 'var(--font-display)', color: 'var(--fg)' }}
+                >
+                  {step.title}
+                </h3>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-16 text-center">
+            <button
+              onClick={() => setOpen(true)}
+              className="inline-flex items-center gap-2 rounded-[3px] px-8 py-4 text-sm font-semibold text-white transition-colors"
+              style={{ backgroundColor: 'var(--red)' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red-hover)')}
+              onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--red)')}
+            >
+              Iniciar conversa estratégica →
+            </button>
+            <p className="mt-3 text-xs" style={{ color: 'var(--subtle)', fontFamily: 'var(--font-mono)' }}>
+              Sem compromisso · Resposta em até 24h
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <BriefingModal open={open} onClose={() => setOpen(false)} />
+    </>
   )
 }
