@@ -31,29 +31,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Preencha as variáveis no `.env.local`:
-
-```env
-DATABASE_URL=postgresql://...           # Neon database URL
-RESEND_API_KEY=re_...                   # Resend API key
-RESEND_FROM_EMAIL=contato@...
-RESEND_NOTIFY_EMAIL=time@...
-NEXT_PUBLIC_WHATSAPP_NUMBER=5511999...
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=sua-senha-forte
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_SITE_NAME=Multitudes Consultoria
-
-DATABASE_URL="postgresql://..."
-
-AUTH_SECRET=""
-
-RESEND_API_KEY="..."
-
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
-
-YOUTUBE_API_KEY= AIzaSyCt7_SMhaAhEsoiA9daFE6FmSutcslN1bE
-```
+Preencha as variáveis no `.env.local` (veja o `.env.example` incluído no repositório).
 
 ### 3. Configure o banco de dados
 
@@ -138,17 +116,76 @@ multitudes/
 
 ## Deploy
 
-### Vercel + Neon
+### Requisitos da infraestrutura
 
-1. Crie um banco PostgreSQL no [Neon](https://neon.tech) (free tier)
-2. Conecte o repositório no [Vercel](https://vercel.com)
-3. Configure as variáveis de ambiente no painel do Vercel
-4. O deploy acontece automaticamente a cada push
+Este projeto exige dois serviços para funcionar em produção:
 
-### Variáveis de ambiente no Vercel
+| Serviço | Requisito |
+|---|---|
+| **Plataforma Node.js** | Suporte a Next.js 16 com App Router (SSR + API Routes) |
+| **PostgreSQL** | Banco relacional compatível com Prisma (versão 14+) |
 
-Configure todas as variáveis do `.env.example` no painel:
-`Settings → Environment Variables`
+> **Atenção:** o projeto **não** pode ser hospedado em hospedagens PHP tradicionais (Hostinger, Locaweb shared, GoDaddy shared), pois requer runtime Node.js e banco PostgreSQL externo.
+
+---
+
+### Opções de hospedagem recomendadas
+
+#### Opção A — Vercel + Neon *(recomendada)*
+
+Combinação nativa para Next.js. Zero configuração de servidor.
+
+| Item | Detalhe |
+|---|---|
+| App (Next.js) | [vercel.com](https://vercel.com) — plano Hobby gratuito ou Pro ~$20/mês |
+| Banco (PostgreSQL) | [neon.tech](https://neon.tech) — free tier generoso (0,5 GB, serverless) |
+| CI/CD | Automático via push no GitHub |
+| Escalabilidade | Serverless, escala automaticamente |
+
+**Passos:**
+1. Crie o banco em [neon.tech](https://neon.tech) e copie a `DATABASE_URL`
+2. Conecte o repositório em [vercel.com](https://vercel.com)
+3. Configure as variáveis de ambiente em `Settings → Environment Variables`
+4. Deploy automático a cada push na branch principal
+
+---
+
+#### Opção B — Railway *(tudo em um lugar)*
+
+Hospeda o app Next.js e o PostgreSQL na mesma plataforma.
+
+| Item | Detalhe |
+|---|---|
+| App + Banco | [railway.app](https://railway.app) |
+| Custo | ~$5–20/mês conforme uso (baseado em consumo) |
+| Vantagem | App e banco no mesmo painel, mais simples de gerenciar |
+
+---
+
+#### Opção C — Render *(econômico)*
+
+| Item | Detalhe |
+|---|---|
+| App (Web Service) | [render.com](https://render.com) — ~$7/mês |
+| Banco (PostgreSQL) | Render Postgres — ~$7/mês |
+| Observação | Cold start em planos gratuitos (lentidão na primeira requisição) |
+
+---
+
+### Variáveis de ambiente obrigatórias
+
+Configure todas as variáveis do `.env.example` no painel da plataforma escolhida:
+
+```
+DATABASE_URL          # String de conexão PostgreSQL
+RESEND_API_KEY        # Chave da API Resend (e-mails transacionais)
+RESEND_FROM_EMAIL     # E-mail remetente verificado no Resend
+RESEND_NOTIFY_EMAIL   # E-mail que recebe notificações internas
+ADMIN_USERNAME        # Usuário do painel /admin
+ADMIN_PASSWORD        # Senha do painel /admin
+NEXT_PUBLIC_APP_URL   # URL pública do site (ex: https://multitudes.com.br)
+YOUTUBE_API_KEY       # Chave da API do YouTube (para seção de vídeos)
+```
 
 ## Design System
 
